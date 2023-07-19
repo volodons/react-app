@@ -9,9 +9,9 @@ function App(): JSX.Element {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" component={PostsList} />
-          <Route path="/users" component={UserList} />
-          <Route path="/todos" component={ToDoList} />
+          <Route exact path="/" element={<PostsList />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/todos" element={<ToDoList />} />
         </Routes>
       </Router>
     </>
