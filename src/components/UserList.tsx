@@ -1,8 +1,10 @@
 import React from "react";
+import Navigation from "./Navigation";
 
 function UserList(): JSX.Element {
   return (
     <>
+      <Navigation />
       <h1>This is User List!</h1>
       <ul>
         <li>User 1</li>
