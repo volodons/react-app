@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 function PostsList(): JSX.Element {
   return (
     <>
+      <Navigation />
       <h1>This is Posts List!</h1>
       <ul>
         <li>Post 1</li>
