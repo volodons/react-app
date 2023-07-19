@@ -1,20 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navigation(): JSX.Element {
   return (
     <>
       <ul>
         <li>
-          <a href="#">Navigation</a>
+          <Link to="/">Posts List</Link>
         </li>
         <li>
-          <a href="#">Posts List</a>
+          <Link to="/todos">ToDo List</Link>
         </li>
         <li>
-          <a href="#">ToDo List</a>
-        </li>
-        <li>
-          <a href="#">User List</a>
+          <Link to="/users">User List</Link>
         </li>
       </ul>
     </>
