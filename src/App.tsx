@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PostsList from "./components/post/PostsList";
 import UsersList from "./components/user/UsersList";

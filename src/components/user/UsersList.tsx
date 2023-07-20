@@ -1,4 +1,3 @@
-import React from "react";
 import Navigation from "../layout/Navigation";
 import List from "../common/List";
 import UserItem from "./UserItem";
