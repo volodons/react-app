@@ -10,10 +10,10 @@ function Navigation(): JSX.Element {
             <Link to="/">Posts List</Link>
           </li>
           <li>
-            <Link to="/todos">ToDo List</Link>
+            <Link to="/todos">ToDos List</Link>
           </li>
           <li>
-            <Link to="/users">User List</Link>
+            <Link to="/users">Users List</Link>
           </li>
         </ul>
       </nav>

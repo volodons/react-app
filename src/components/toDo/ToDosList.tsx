@@ -1,18 +1,18 @@
 import React from "react";
 import Navigation from "../layout/Navigation";
 import List from "../common/List";
-import UserItem from "./UserItem";
+import ToDoItem from "./ToDoItem";
 
-function UserList(): JSX.Element {
+function ToDosList(): JSX.Element {
   return (
     <>
       <Navigation />
-      <h1>This is User List!</h1>
+      <h1>This is ToDos List!</h1>
       <List>
-        <UserItem />
+        <ToDoItem />
       </List>
     </>
   );
 }
 
-export default UserList;
+export default ToDosList;
