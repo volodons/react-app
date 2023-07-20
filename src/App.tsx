@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PostsList from "./components/PostsList";
-import UserList from "./components/UserList";
-import ToDoList from "./components/ToDoList";
+import PostsList from "./components/post/PostsList";
+import UserList from "./components/user/UserList";
+import ToDoList from "./components/toDo/ToDoList";
 
 function App(): JSX.Element {
   return (
