@@ -7,7 +7,7 @@ function UsersList(): JSX.Element {
   return (
     <>
       <Navigation />
-      <h1>This is Users List!</h1>
+      <h1>Users List</h1>
       <List>
         <UserItem />
       </List>

@@ -7,7 +7,7 @@ function ToDosList(): JSX.Element {
   return (
     <>
       <Navigation />
-      <h1>This is ToDos List!</h1>
+      <h1>ToDos List</h1>
       <List>
         <ToDoItem />
       </List>
