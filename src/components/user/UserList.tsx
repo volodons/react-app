@@ -1,18 +1,16 @@
 import React from "react";
 import Navigation from "../layout/Navigation";
+import List from "../common/List";
+import UserItem from "./UserItem";
 
 function UserList(): JSX.Element {
   return (
     <>
       <Navigation />
       <h1>This is User List!</h1>
-      <ul>
-        <li>User 1</li>
-        <li>User 2</li>
-        <li>User 3</li>
-        <li>User 4</li>
-        <li>User 5</li>
-      </ul>
+      <List>
+        <UserItem />
+      </List>
     </>
   );
 }
