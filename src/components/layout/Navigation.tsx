@@ -6,7 +6,10 @@ function Navigation(): JSX.Element {
       <nav>
         <ul>
           <li>
-            <Link to="/">Posts List</Link>
+            <Link to="/">Home Page</Link>
+          </li>
+          <li>
+            <Link to="/posts">Posts List</Link>
           </li>
           <li>
             <Link to="/todos">ToDos List</Link>
