@@ -9,10 +9,6 @@ function PostsList(): JSX.Element {
       <h1 className="underline self-center text-6xl">Posts List</h1>
       <List>
         <PostItem />
-        <PostItem />
-        <PostItem />
-        <PostItem />
-        <PostItem />
       </List>
     </>
   );
