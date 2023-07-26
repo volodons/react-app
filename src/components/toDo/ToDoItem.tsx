@@ -1,7 +1,7 @@
-import { useGetToDoQuery } from "../../api/toDosApi";
+import { useGetToDosQuery } from "../../api/toDosApi";
 
 function ToDoItem(): JSX.Element {
-  const { data: toDos = [], error } = useGetToDoQuery();
+  const { data: toDos = [], error } = useGetToDosQuery();
 
   if (error) {
     return <div>Error loading toDos</div>;

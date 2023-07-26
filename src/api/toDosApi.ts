@@ -5,10 +5,10 @@ export const toDosApi = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (builder) => ({
-    getToDo: builder.query({
+    getToDos: builder.query({
       query: () => "todos",
     }),
   }),
 });
 
-export const { useGetToDoQuery } = toDosApi;
+export const { useGetToDosQuery } = toDosApi;

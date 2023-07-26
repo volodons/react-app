@@ -1,16 +1,26 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import { jsonPlaceholderApi } from "../api/jsonPlaceholderAPI";
+import { postsApi } from "../api/postsApi";
+import { toDosApi } from "../api/toDosApi";
+import { usersApi } from "../api/usersApi";
 import postsReducer from "../reducers/postsReducer";
-import usersReducer from "../reducers/usersReducer";
 import toDosReducer from "../reducers/toDosReducer";
+import usersReducer from "../reducers/usersReducer";
 
 const store = configureStore({
   reducer: {
-    [jsonPlaceholderApi.reducerPath]: jsonPlaceholderApi.reducer,
+    [postsApi.reducerPath]: postsApi.reducer,
+    [toDosApi.reducerPath]: toDosApi.reducer,
+    [usersApi.reducerPath]: usersApi.reducer,
+    posts: postsReducer,
+    toDos: toDosReducer,
+    users: usersReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(jsonPlaceholderApi.middleware),
+    getDefaultMiddleware()
+      .concat(postsApi.middleware)
+      .concat(toDosApi.middleware)
+      .concat(usersApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
