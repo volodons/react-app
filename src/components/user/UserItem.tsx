@@ -1,4 +1,4 @@
-import { useGetUsersQuery } from "../../api/jsonPlaceholderAPI";
+import { useGetUsersQuery } from "../../api/usersApi";
 
 function UserItem(): JSX.Element {
   const { data: users = [], error } = useGetUsersQuery();
