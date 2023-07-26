@@ -1,4 +1,4 @@
-import { useGetPostsQuery } from "../../api/jsonPlaceholderAPI";
+import { useGetPostsQuery } from "../../api/postsApi";
 
 function PostItem(): JSX.Element {
   const { data: posts = [], error } = useGetPostsQuery();
