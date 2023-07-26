@@ -9,10 +9,6 @@ function UsersList(): JSX.Element {
       <h1 className="underline self-center text-6xl">Users List</h1>
       <List>
         <UserItem />
-        <UserItem />
-        <UserItem />
-        <UserItem />
-        <UserItem />
       </List>
     </>
   );
