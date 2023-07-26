@@ -1,4 +1,4 @@
-import { useGetToDoQuery } from "../../api/jsonPlaceholderAPI";
+import { useGetToDoQuery } from "../../api/toDosApi";
 
 function ToDoItem(): JSX.Element {
   const { data: toDos = [], error } = useGetToDoQuery();
