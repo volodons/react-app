@@ -14,4 +14,4 @@ function TodoList(): JSX.Element {
   );
 }
 
-export default ToDoList;
+export default TodoList;
