@@ -1,8 +1,18 @@
+import { useGetPostsQuery } from "../../api/postsApi";
+
 function PostItem(): JSX.Element {
+  const { data: posts = [], error } = useGetPostsQuery();
+
+  if (error) {
+    return <div>Error loading posts</div>;
+  }
+
   return (
-    <li className="mt-10 mb-10 text-center border-4 border-solid border-white p-10">
-      Post
-    </li>
+    <>
+      {posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </>
   );
 }
 

@@ -1,8 +1,18 @@
+import { useGetToDosQuery } from "../../api/toDosApi";
+
 function ToDoItem(): JSX.Element {
+  const { data: toDos = [], error } = useGetToDosQuery();
+
+  if (error) {
+    return <div>Error loading toDos</div>;
+  }
+
   return (
-    <li className="mt-10 mb-10 text-center border-4 border-solid border-white p-10">
-      ToDo
-    </li>
+    <>
+      {toDos.map((toDo) => (
+        <li key={toDo.id}>{toDo.title}</li>
+      ))}
+    </>
   );
 }
 

@@ -1,8 +1,20 @@
+import { useGetUsersQuery } from "../../api/usersApi";
+
 function UserItem(): JSX.Element {
+  const { data: users = [], error } = useGetUsersQuery();
+
+  if (error) {
+    return <div>Error loading users</div>;
+  }
+
   return (
-    <li className="mt-10 mb-10 text-center border-4 border-solid border-white p-10">
-      User
-    </li>
+    <>
+      {users.map((user) => (
+        <li key={user.id}>
+          User: {user.name}, Username: {user.username}
+        </li>
+      ))}
+    </>
   );
 }
 
