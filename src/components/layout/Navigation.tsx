@@ -17,7 +17,7 @@ function Navigation(): JSX.Element {
           </li>
           <li>
             <Link to="/todos" className="text-blue-500 font-bold">
-              ToDos List
+              ToDo List
             </Link>
           </li>
           <li>

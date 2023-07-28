@@ -1,11 +1,11 @@
 import { baseApi } from "./baseApi";
 
-const toDosApi = baseApi.injectEndpoints({
+const todosApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getToDos: builder.query({
+    getTodos: builder.query({
       query: () => "todos",
     }),
   }),
 });
 
-export const { useGetToDosQuery } = toDosApi;
+export const { useGetTodosQuery } = todosApi;

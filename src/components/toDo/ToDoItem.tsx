@@ -1,19 +1,19 @@
-import { useGetToDosQuery } from "../../api/toDosApi";
+import { useGetTodosQuery } from "../../api/todosApi";
 
-function ToDoItem(): JSX.Element {
-  const { data: toDos = [], error } = useGetToDosQuery();
+function TodoItem(): JSX.Element {
+  const { data: todos = [], error } = useGetTodosQuery();
 
   if (error) {
-    return <div>Error loading toDos</div>;
+    return <div>Error loading ToDo items</div>;
   }
 
   return (
     <>
-      {toDos.map((toDo) => (
-        <li key={toDo.id}>{toDo.title}</li>
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.title}</li>
       ))}
     </>
   );
 }
 
-export default ToDoItem;
+export default TodoItem;
