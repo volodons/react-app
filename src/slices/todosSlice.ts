@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchTodos } from "../api/todosApi";
 
 const initialState = {
-  data: [],
+  todos: [],
   loading: false,
   error: null,
 };
@@ -9,23 +10,22 @@ const initialState = {
 const todosSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {
-    fetchTodosPending: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    fetchTodosSuccess: (state, action) => {
-      state.loading = false;
-      state.error = null;
-      state.data = action.payload;
-    },
-    fetchTodosFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchTodos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchTodos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.todos = action.payload;
+      })
+      .addCase(fetchTodos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { fetchTodosPending, fetchTodosSuccess, fetchTodosFailure } =
-  todosSlice.actions;
 export default todosSlice.reducer;

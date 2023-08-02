@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../../api/todosApi";
 
 function TodoItem(): JSX.Element {
-  const todos = useSelector((state) => state.todos.data);
-  const error = useSelector((state) => state.todos.error);
   const dispatch = useDispatch();
+  const { todos, loading, error } = useSelector((state) => state.todos);
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>Error loading todos</div>;
