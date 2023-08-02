@@ -1,11 +1,24 @@
-import { baseApi } from "./baseApi";
+import axios from "axios";
 
-const todosApi = baseApi.injectEndpoints({
-  endpoints: (builder) => ({
-    getTodos: builder.query({
-      query: () => "todos",
-    }),
-  }),
+export const fetchTodos = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      dispatch(fetchTodosSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchTodosFailure(error.message));
+    }
+  };
+};
+
+const fetchTodosSuccess = (todos) => ({
+  type: "FETCH_TODOS_SUCCESS",
+  payload: todos,
 });
 
-export const { useGetTodosQuery } = todosApi;
+const fetchTodosFailure = (error) => ({
+  type: "FETCH_TODOS_FAILURE",
+  payload: error,
+});
