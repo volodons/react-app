@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "../thunks/postsThunk";
+import { fetchPosts } from "../api/postsApi";
 
 const initialState = {
   posts: [],

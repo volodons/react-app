@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../thunks/postsThunk";
+import { fetchPosts } from "../../api/postsApi";
 
 function PostItem(): JSX.Element {
   const { posts, loading, error } = useSelector((state) => state.posts);
