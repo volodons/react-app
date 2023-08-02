@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../../api/usersApi";
 
 function UserItem(): JSX.Element {
-  const users = useSelector((state) => state.users.data);
-  const error = useSelector((state) => state.users.error);
   const dispatch = useDispatch();
+  const { users, loading, error } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>Error loading users</div>;
@@ -19,7 +22,7 @@ function UserItem(): JSX.Element {
     <>
       {users.map((user) => (
         <li key={user.id}>
-          Name: {user.name} Username: {user.username}
+          Name: {user.name}, <br /> Username: {user.username}
         </li>
       ))}
     </>
