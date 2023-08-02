@@ -1,11 +1,12 @@
-import { baseApi } from "./baseApi";
+import axios from "axios";
 
-const postsApi = baseApi.injectEndpoints({
-  endpoints: (builder) => ({
-    getPosts: builder.query({
-      query: () => "posts",
-    }),
-  }),
-});
-
-export const { useGetPostsQuery } = postsApi;
+export const fetchPosts = async () => {
+  try {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+    return response.data;
+  } catch (error) {
+    return error.message;
+  }
+};
