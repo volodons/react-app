@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../api/postsApi";
 
 function PostItem(): JSX.Element {
-  const { posts, loading, error } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  const { posts, loading, error } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
