@@ -21,7 +21,13 @@ function TodoItem(): JSX.Element {
   return (
     <>
       {todos.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
+        <li
+          key={todo.id}
+          onClick={() => console.log(`You clicked on ToDo Number ${todo.id}`)}
+          className="hover:cursor-pointer"
+        >
+          {todo.title}
+        </li>
       ))}
     </>
   );
