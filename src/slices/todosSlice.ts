@@ -10,7 +10,15 @@ const initialState = {
 const todosSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleTodo: (state, action) => {
+      const todoId = action.payload;
+      const todoToToggle = state.todos.find((todo) => todo.id === todoId);
+      if (todoToToggle) {
+        todoToToggle.completed = !todoToToggle.completed;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.pending, (state) => {
@@ -28,4 +36,5 @@ const todosSlice = createSlice({
   },
 });
 
+export const { toggleTodo } = todosSlice.actions;
 export default todosSlice.reducer;

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../../api/todosApi";
+import { toggleTodo } from "../../slices/todosSlice";
 
 function TodoItem(): JSX.Element {
   const dispatch = useDispatch();
@@ -23,8 +24,10 @@ function TodoItem(): JSX.Element {
       {todos.map((todo) => (
         <li
           key={todo.id}
-          onClick={() => console.log(`You clicked on ToDo Number ${todo.id}`)}
-          className="hover:cursor-pointer"
+          onClick={() => dispatch(toggleTodo(todo.id))}
+          className={`hover:cursor-pointer ${
+            todo.completed ? "line-through text-gray-500" : ""
+          }`}
         >
           {todo.title}
         </li>
