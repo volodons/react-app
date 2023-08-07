@@ -11,6 +11,11 @@ function Navigation(): JSX.Element {
             </Link>
           </li>
           <li>
+            <Link to="/add-post" className="text-blue-500 font-bold">
+              Add Post
+            </Link>
+          </li>
+          <li>
             <Link to="/posts" className="text-blue-500 font-bold">
               Posts List
             </Link>
