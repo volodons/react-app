@@ -1,19 +1,19 @@
 import Navigation from "../layout/Navigation";
 import List from "../common/List";
-import UserItem from "./UserItem";
+import TodoItem from "./TodoItem";
 
-function UsersList(): JSX.Element {
+function TodoList(): JSX.Element {
   return (
     <>
       <Navigation />
       <h1 className="mt-5 mb-5 underline self-center text-center text-6xl">
-        Users List
+        ToDo List
       </h1>
       <List>
-        <UserItem />
+        <TodoItem />
       </List>
     </>
   );
 }
 
-export default UsersList;
+export default TodoList;

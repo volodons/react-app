@@ -1,5 +1,5 @@
 function List(props: { children: React.ReactNode }): JSX.Element {
-  return <ul>{props.children}</ul>;
+  return <ul className="list-disc">{props.children}</ul>;
 }
 
 export default List;

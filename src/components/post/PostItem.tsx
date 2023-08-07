@@ -1,7 +1,18 @@
-import { useGetPostsQuery } from "../../api/postsApi";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPosts } from "../../api/postsApi";
 
 function PostItem(): JSX.Element {
-  const { data: posts = [], error } = useGetPostsQuery();
+  const dispatch = useDispatch();
+  const { posts, loading, error } = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>Error loading posts</div>;

@@ -1,7 +1,7 @@
-import ToDosList from "../components/toDo/ToDosList";
+import TodoList from "../components/todo/TodoList";
 
-function ToDosPage(): JSX.Element {
-  return <ToDosList />;
+function TodosPage(): JSX.Element {
+  return <TodoList />;
 }
 
-export default ToDosPage;
+export default TodosPage;
