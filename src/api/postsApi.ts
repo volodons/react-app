@@ -25,7 +25,7 @@ export const sendPost = createAsyncThunk("sendPost", async (post) => {
   const posts = state.posts.posts;
 
   try {
-    const response = await axios.post(
+    await axios.post(
       "https://jsonplaceholder.typicode.com/posts",
       {
         title: post.title,
