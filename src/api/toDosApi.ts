@@ -13,7 +13,7 @@ export const fetchTodos = createAsyncThunk("fetchTodos", async () => {
       );
       return response.data;
     } catch (error) {
-      throw Error("Failed to fetch todos");
+      throw new Error("Failed to fetch todos");
     }
   } else {
     return todos;
