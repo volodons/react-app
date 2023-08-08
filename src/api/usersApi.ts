@@ -13,7 +13,7 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
       );
       return response.data;
     } catch (error) {
-      throw Error("Failed to fetch users");
+      throw new Error("Failed to fetch users");
     }
   } else {
     return users;
