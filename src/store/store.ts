@@ -14,13 +14,11 @@ import { useDispatch } from "react-redux";
 import postsReducer from "../slices/postsSlice";
 import todosReducer from "../slices/todosSlice";
 import usersReducer from "../slices/usersSlice";
-import formReducer from "../slices/formSlice";
 
 const rootReducer = combineReducers({
   posts: postsReducer,
   todos: todosReducer,
   users: usersReducer,
-  form: formReducer,
 });
 
 const persistConfig = {
