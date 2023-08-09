@@ -30,8 +30,10 @@ function AddPostForm(): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="title">Title:</label>
+      <div className="flex flex-col align-center m-4">
+        <label htmlFor="title" className="font-semibold">
+          Title:
+        </label>
         <Controller
           name="title"
           control={control}
@@ -52,13 +54,18 @@ function AddPostForm(): JSX.Element {
               type="text"
               id="title"
               placeholder="Put post title here..."
+              className="rounded-md p-2 text-black"
             />
           )}
         />
-        {errors.title && <p>{errors.title.message}</p>}
+        {errors.title && (
+          <p className="text-red-600 font-bold">{errors.title.message}</p>
+        )}
       </div>
-      <div>
-        <label htmlFor="body">Text:</label>
+      <div className="flex flex-col align-center m-4">
+        <label htmlFor="body" className="font-semibold">
+          Text:
+        </label>
         <Controller
           name="body"
           control={control}
@@ -78,15 +85,23 @@ function AddPostForm(): JSX.Element {
               {...field}
               id="body"
               placeholder="Put post text here..."
+              className="rounded-md p-2 h-32 text-black"
             />
           )}
         />
-        {errors.body && <p>{errors.body.message}</p>}
+        {errors.body && (
+          <p className="text-red-600 font-bold">{errors.body.message}</p>
+        )}
       </div>
       {loading ? <div>Sending...</div> : null}
       {error && <div>{error}</div>}
-      <div>
-        <button type="submit">Send</button>
+      <div className="flex justify-center m-4">
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          Send
+        </button>
       </div>
     </form>
   );
