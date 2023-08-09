@@ -25,7 +25,7 @@ export const sendPost = createAsyncThunk("sendPost", async (post) => {
   const posts = state.posts.posts;
 
   try {
-    await axios.post(
+    const response = await axios.post(
       "https://jsonplaceholder.typicode.com/posts",
       {
         title: post.title,
@@ -39,6 +39,7 @@ export const sendPost = createAsyncThunk("sendPost", async (post) => {
         },
       }
     );
+    return response.data;
   } catch (error) {
     throw new Error("Failed to add post");
   }

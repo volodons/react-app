@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addPost } from "../../slices/postsSlice";
 import { sendPost } from "../../api/postsApi";
 import { useForm, Controller } from "react-hook-form";
 
@@ -20,7 +19,6 @@ function AddPostForm(): JSX.Element {
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(addPost(data));
       await dispatch(sendPost(data));
       reset();
     } catch (error) {

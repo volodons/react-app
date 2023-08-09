@@ -11,16 +11,7 @@ const initialState = {
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {
-    addPost: (state, action) => {
-      const userId = Math.floor(Math.random() * 10) + 1;
-      const id = state.posts.length + 1;
-      const post = action.payload;
-      post.userId = userId;
-      post.id = id;
-      state.posts.push(post);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -39,9 +30,9 @@ const postsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(sendPost.fulfilled, (state) => {
+      .addCase(sendPost.fulfilled, (state, action) => {
         state.loading = false;
-        // state.posts = state.posts.push(action.payload);
+        state.posts.push(action.payload);
       })
       .addCase(sendPost.rejected, (state, action) => {
         state.loading = false;
@@ -50,5 +41,4 @@ const postsSlice = createSlice({
   },
 });
 
-export const { addPost } = postsSlice.actions;
 export default postsSlice.reducer;
