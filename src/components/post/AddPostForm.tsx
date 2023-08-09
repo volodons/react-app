@@ -1,88 +1,93 @@
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setTitle,
-  setBody,
-  resetForm,
-  setValidationErrors,
-} from "../../slices/formSlice";
 import { addPost } from "../../slices/postsSlice";
 import { sendPost } from "../../api/postsApi";
+import { useForm, Controller } from "react-hook-form";
 
 function AddPostForm(): JSX.Element {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.posts);
-  const { title, body, validationErrors } = useSelector((state) => state.form);
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      title: "",
+      body: "",
+    },
+  });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const errors = [];
-
-    if (!title || !body) {
-      errors.push("Title and body are required.");
-    }
-
-    if (title.length < 5) {
-      errors.push("Title must be at least 5 characters long.");
-    }
-
-    if (body.length < 10) {
-      errors.push("Body must be at least 10 characters long.");
-    }
-
-    if (title.length > 100) {
-      errors.push("Title must not exceed 100 characters.");
-    }
-
-    if (body.length > 500) {
-      errors.push("Body must not exceed 500 characters.");
-    }
-
-    if (errors.length > 0) {
-      dispatch(setValidationErrors(errors));
-      return;
-    }
-
-    const data = {
-      title: title,
-      body: body,
-    };
-
+  const onSubmit = async (data) => {
     try {
       await dispatch(addPost(data));
       await dispatch(sendPost(data));
-      dispatch(resetForm());
+      reset();
     } catch (error) {
       console.error("Failed to send post: ", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => dispatch(setTitle(e.target.value))}
+        <Controller
+          name="title"
+          control={control}
+          rules={{
+            required: "Title is required",
+            minLength: {
+              value: 5,
+              message: "Title must be at least 5 characters long",
+            },
+            maxLength: {
+              value: 50,
+              message: "Title must not exceed 50 characters",
+            },
+          }}
+          render={({ field }) => (
+            <input
+              {...field}
+              type="text"
+              id="title"
+              placeholder="Put post title here..."
+            />
+          )}
         />
+        {errors.title && <p>{errors.title.message}</p>}
       </div>
       <div>
         <label htmlFor="body">Text:</label>
-        <textarea
-          id="body"
-          value={body}
-          onChange={(e) => dispatch(setBody(e.target.value))}
+        <Controller
+          name="body"
+          control={control}
+          rules={{
+            required: "Body is required",
+            minLength: {
+              value: 10,
+              message: "Body must be at least 10 characters long",
+            },
+            maxLength: {
+              value: 100,
+              message: "Body must not exceed 100 characters",
+            },
+          }}
+          render={({ field }) => (
+            <textarea
+              {...field}
+              id="body"
+              placeholder="Put post text here..."
+            />
+          )}
         />
+        {errors.body && <p>{errors.body.message}</p>}
       </div>
-      {validationErrors.map((error, index) => (
-        <div key={index} className="text-red-500">
-          {error}
-        </div>
-      ))}
       {loading ? <div>Sending...</div> : null}
       {error && <div>{error}</div>}
-      <button type="submit">Send</button>
+      <div>
+        <button type="submit">Send</button>
+      </div>
     </form>
   );
 }
