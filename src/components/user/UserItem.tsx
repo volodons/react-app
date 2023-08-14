@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../../api/usersApi";
+import { Link } from "react-router-dom";
 
 function UserItem(): JSX.Element {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function UserItem(): JSX.Element {
     <>
       {users.map((user) => (
         <li key={user.id}>
-          Name: {user.name}, <br /> Username: {user.username}
+          <Link to={`/users/${user.id}`}>Name: {user.name}</Link>
         </li>
       ))}
     </>

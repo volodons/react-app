@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import AddPostPage from "./pages/AddPostPage";
 import PostsPage from "./pages/PostsPage";
 import UsersPage from "./pages/UsersPage";
+import UserDetailsPage from "./pages/UserDetailsPage";
 import TodosPage from "./pages/TodosPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -15,6 +16,7 @@ function App(): JSX.Element {
           <Route path="/add-post" element={<AddPostPage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/*" element={<UserDetailsPage />} />
           <Route path="/todos" element={<TodosPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
