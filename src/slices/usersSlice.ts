@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../api/usersApi";
+import { fetchUserDetails } from "../api/userDetailsApi";
 
 const initialState = {
   users: [],
+  userDetails: {},
   loading: false,
   error: null,
 };
@@ -22,6 +24,18 @@ const usersSlice = createSlice({
         state.users = action.payload;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchUserDetails.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userDetails = action.payload;
+      })
+      .addCase(fetchUserDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
