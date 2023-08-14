@@ -19,3 +19,17 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
     return users;
   }
 });
+
+export const fetchUserDetails = createAsyncThunk(
+  "fetchUserDetails",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch user details");
+    }
+  }
+);
