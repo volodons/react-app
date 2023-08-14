@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers } from "../api/usersApi";
-import { fetchUserDetails } from "../api/userDetailsApi";
+import { fetchUsers, fetchUserDetails } from "../api/usersApi";
 
 const initialState = {
   users: [],
