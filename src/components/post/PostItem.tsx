@@ -21,7 +21,9 @@ function PostItem(): JSX.Element {
   return (
     <>
       {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
+        <li key={post.id}>
+          Title: {post.title} <br /> Text: {post.body}
+        </li>
       ))}
     </>
   );
