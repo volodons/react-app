@@ -40,7 +40,7 @@ function UserDetails(): JSX.Element {
       </li>
       <li className="mt-4">
         <FontAwesomeIcon icon={faLocationDot} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.address.city}</span>
+        <span className="ml-6 font-bold">{userDetails.address?.city}</span>
       </li>
       <li className="mt-4">
         <FontAwesomeIcon icon={faGlobe} style={{ color: "#3b82f6" }} />
@@ -48,7 +48,7 @@ function UserDetails(): JSX.Element {
       </li>
       <li className="mt-4">
         <FontAwesomeIcon icon={faBriefcase} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.company.name}</span>
+        <span className="ml-6 font-bold">{userDetails.company?.name}</span>
       </li>
     </ul>
   );
