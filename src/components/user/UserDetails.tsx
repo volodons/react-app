@@ -25,7 +25,7 @@ function UserDetails(): JSX.Element {
   }
 
   if (error) {
-    return <div>Error loading users</div>;
+    return <div>Error loading user details</div>;
   }
 
   return (
