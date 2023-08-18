@@ -4,6 +4,7 @@ import { fetchUsers, fetchUserDetails } from "../api/usersApi";
 const initialState = {
   users: [],
   userDetails: {},
+  userDetailsTab: 1,
   loading: false,
   error: null,
 };
@@ -11,7 +12,11 @@ const initialState = {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    switchUserDetailsTab: (state, action) => {
+      state.userDetailsTab = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -41,4 +46,5 @@ const usersSlice = createSlice({
   },
 });
 
+export const { switchUserDetailsTab } = usersSlice.actions;
 export default usersSlice.reducer;
