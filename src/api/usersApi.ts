@@ -20,8 +20,8 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   }
 });
 
-export const fetchUserDetails = createAsyncThunk(
-  "fetchUserDetails",
+export const fetchUserInfo = createAsyncThunk(
+  "fetchUserInfo",
   async (userId) => {
     try {
       const response = await axios.get(
@@ -29,7 +29,7 @@ export const fetchUserDetails = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      throw new Error("Failed to fetch user details");
+      throw new Error("Failed to fetch user info");
     }
   }
 );

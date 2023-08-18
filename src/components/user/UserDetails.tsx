@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUserDetails } from "../../api/usersApi";
 import { switchUserDetailsTab } from "../../slices/usersSlice";
+import { fetchUserInfo } from "../../api/usersApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -15,8 +15,8 @@ import {
 function UserDetails(): JSX.Element {
   const dispatch = useDispatch();
   const {
-    userDetails,
     userDetailsTab,
+    userInfo,
     userAlbums,
     userTodos,
     userPosts,
@@ -26,7 +26,7 @@ function UserDetails(): JSX.Element {
   const { userId } = useParams();
 
   useEffect(() => {
-    dispatch(fetchUserDetails(userId));
+    dispatch(fetchUserInfo(userId));
   }, [dispatch]);
 
   if (loading) {
@@ -89,29 +89,29 @@ function UserDetails(): JSX.Element {
         <ul>
           <li className="mt-4">
             <FontAwesomeIcon icon={faEnvelope} style={{ color: "#3b82f6" }} />
-            <span className="ml-6 font-bold">{userDetails.email}</span>
+            <span className="ml-6 font-bold">{userInfo.email}</span>
           </li>
           <li className="mt-4">
             <FontAwesomeIcon
               icon={faPhoneVolume}
               style={{ color: "#3b82f6" }}
             />
-            <span className="ml-6 font-bold">{userDetails.phone}</span>
+            <span className="ml-6 font-bold">{userInfo.phone}</span>
           </li>
           <li className="mt-4">
             <FontAwesomeIcon
               icon={faLocationDot}
               style={{ color: "#3b82f6" }}
             />
-            <span className="ml-6 font-bold">{userDetails.address?.city}</span>
+            <span className="ml-6 font-bold">{userInfo.address?.city}</span>
           </li>
           <li className="mt-4">
             <FontAwesomeIcon icon={faGlobe} style={{ color: "#3b82f6" }} />
-            <span className="ml-6 font-bold">{userDetails.website}</span>
+            <span className="ml-6 font-bold">{userInfo.website}</span>
           </li>
           <li className="mt-4">
             <FontAwesomeIcon icon={faBriefcase} style={{ color: "#3b82f6" }} />
-            <span className="ml-6 font-bold">{userDetails.company?.name}</span>
+            <span className="ml-6 font-bold">{userInfo.company?.name}</span>
           </li>
         </ul>
       </div>
