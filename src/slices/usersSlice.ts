@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers, fetchUserInfo } from "../api/usersApi";
+import {
+  fetchUsers,
+  fetchUserInfo,
+  fetchUserAlbums,
+  fetchUserTodos,
+  fetchUserPosts,
+} from "../api/usersApi";
 
 const initialState = {
   users: [],
@@ -43,6 +49,42 @@ const usersSlice = createSlice({
         state.userInfo = action.payload;
       })
       .addCase(fetchUserInfo.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchUserAlbums.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserAlbums.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userAlbums = action.payload;
+      })
+      .addCase(fetchUserAlbums.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchUserTodos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserTodos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userTodos = action.payload;
+      })
+      .addCase(fetchUserTodos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchUserPosts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userPosts = action.payload;
+      })
+      .addCase(fetchUserPosts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
