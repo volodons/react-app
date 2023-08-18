@@ -29,28 +29,64 @@ function UserDetails(): JSX.Element {
   }
 
   return (
-    <ul className="mt-16">
-      <li className="mt-4">
-        <FontAwesomeIcon icon={faEnvelope} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.email}</span>
-      </li>
-      <li className="mt-4">
-        <FontAwesomeIcon icon={faPhoneVolume} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.phone}</span>
-      </li>
-      <li className="mt-4">
-        <FontAwesomeIcon icon={faLocationDot} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.address?.city}</span>
-      </li>
-      <li className="mt-4">
-        <FontAwesomeIcon icon={faGlobe} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.website}</span>
-      </li>
-      <li className="mt-4">
-        <FontAwesomeIcon icon={faBriefcase} style={{ color: "#3b82f6" }} />
-        <span className="ml-6 font-bold">{userDetails.company?.name}</span>
-      </li>
-    </ul>
+    <div className="p-8">
+      <div className="flex gap-4">
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          User Info
+        </button>
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          User Albums
+        </button>
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          User ToDos
+        </button>
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        >
+          User Posts
+        </button>
+      </div>
+      <div className="flex flex-col items-center mt-4">
+        <ul>
+          <li className="mt-4">
+            <FontAwesomeIcon icon={faEnvelope} style={{ color: "#3b82f6" }} />
+            <span className="ml-6 font-bold">{userDetails.email}</span>
+          </li>
+          <li className="mt-4">
+            <FontAwesomeIcon
+              icon={faPhoneVolume}
+              style={{ color: "#3b82f6" }}
+            />
+            <span className="ml-6 font-bold">{userDetails.phone}</span>
+          </li>
+          <li className="mt-4">
+            <FontAwesomeIcon
+              icon={faLocationDot}
+              style={{ color: "#3b82f6" }}
+            />
+            <span className="ml-6 font-bold">{userDetails.address?.city}</span>
+          </li>
+          <li className="mt-4">
+            <FontAwesomeIcon icon={faGlobe} style={{ color: "#3b82f6" }} />
+            <span className="ml-6 font-bold">{userDetails.website}</span>
+          </li>
+          <li className="mt-4">
+            <FontAwesomeIcon icon={faBriefcase} style={{ color: "#3b82f6" }} />
+            <span className="ml-6 font-bold">{userDetails.company?.name}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }
 
