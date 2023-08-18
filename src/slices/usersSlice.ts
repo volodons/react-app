@@ -5,6 +5,9 @@ const initialState = {
   users: [],
   userDetails: {},
   userDetailsTab: 1,
+  userAlbums: [],
+  userTodos: [],
+  userPosts: [],
   loading: false,
   error: null,
 };

@@ -14,9 +14,15 @@ import {
 
 function UserDetails(): JSX.Element {
   const dispatch = useDispatch();
-  const { userDetails, userDetailsTab, loading, error } = useSelector(
-    (state) => state.users
-  );
+  const {
+    userDetails,
+    userDetailsTab,
+    userAlbums,
+    userTodos,
+    userPosts,
+    loading,
+    error,
+  } = useSelector((state) => state.users);
   const { userId } = useParams();
 
   useEffect(() => {
