@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserDetails } from "../../api/usersApi";
+import { switchUserDetailsTab } from "../../slices/usersSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -13,7 +14,9 @@ import {
 
 function UserDetails(): JSX.Element {
   const dispatch = useDispatch();
-  const { userDetails, loading, error } = useSelector((state) => state.users);
+  const { userDetails, userDetailsTab, loading, error } = useSelector(
+    (state) => state.users
+  );
   const { userId } = useParams();
 
   useEffect(() => {
@@ -33,25 +36,45 @@ function UserDetails(): JSX.Element {
       <div className="flex gap-4">
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          className={
+            userDetailsTab === 1
+              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
+          }
+          onClick={() => dispatch(switchUserDetailsTab(1))}
         >
           User Info
         </button>
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          className={
+            userDetailsTab === 2
+              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
+          }
+          onClick={() => dispatch(switchUserDetailsTab(2))}
         >
           User Albums
         </button>
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          className={
+            userDetailsTab === 3
+              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
+          }
+          onClick={() => dispatch(switchUserDetailsTab(3))}
         >
           User ToDos
         </button>
         <button
           type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          className={
+            userDetailsTab === 4
+              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
+          }
+          onClick={() => dispatch(switchUserDetailsTab(4))}
         >
           User Posts
         </button>
