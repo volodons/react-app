@@ -43,7 +43,7 @@ function UserDetails(): JSX.Element {
           }
           onClick={() => dispatch(switchUserDetailsTab(1))}
         >
-          User Info
+          User's Info
         </button>
         <button
           type="button"
@@ -54,7 +54,7 @@ function UserDetails(): JSX.Element {
           }
           onClick={() => dispatch(switchUserDetailsTab(2))}
         >
-          User Albums
+          User's Albums
         </button>
         <button
           type="button"
@@ -65,7 +65,7 @@ function UserDetails(): JSX.Element {
           }
           onClick={() => dispatch(switchUserDetailsTab(3))}
         >
-          User ToDos
+          User's ToDos
         </button>
         <button
           type="button"
@@ -76,7 +76,7 @@ function UserDetails(): JSX.Element {
           }
           onClick={() => dispatch(switchUserDetailsTab(4))}
         >
-          User Posts
+          User's Posts
         </button>
       </div>
       <div className="flex flex-col items-center mt-4">
