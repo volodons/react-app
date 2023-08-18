@@ -29,7 +29,49 @@ export const fetchUserInfo = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      throw new Error("Failed to fetch user info");
+      throw new Error("Failed to fetch user's info");
+    }
+  }
+);
+
+export const fetchUserAlbums = createAsyncThunk(
+  "fetchUserAlbums",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}/albums`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch user's albums");
+    }
+  }
+);
+
+export const fetchUserTodos = createAsyncThunk(
+  "fetchUserTodos",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}/todos`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch user's todos");
+    }
+  }
+);
+
+export const fetchUserPosts = createAsyncThunk(
+  "fetchUserPosts",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${userId}/posts`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch user's posts");
     }
   }
 );
