@@ -3,13 +3,14 @@ import { switchUserDetailsTab } from "../../slices/usersSlice";
 import UserInfo from "./UserInfo";
 import UserAlbums from "./UserAlbums";
 import UserTodos from "./UserTodos";
+import UserPosts from "./userPosts";
 
 function UserDetails(): JSX.Element {
   const dispatch = useDispatch();
   const { userDetailsTab } = useSelector((state) => state.users);
 
   return (
-    <div className="p-8">
+    <div className="p-8 flex flex-col items-center">
       <div className="flex gap-4">
         <button
           type="button"
@@ -56,9 +57,10 @@ function UserDetails(): JSX.Element {
           User's Posts
         </button>
       </div>
-      <div className="p-2">{userDetailsTab === 1 ? <UserInfo /> : null}</div>
-      <div className="p-2">{userDetailsTab === 2 ? <UserAlbums /> : null}</div>
-      <div className="p-2">{userDetailsTab === 3 ? <UserTodos /> : null}</div>
+      <div>{userDetailsTab === 1 ? <UserInfo /> : null}</div>
+      <div>{userDetailsTab === 2 ? <UserAlbums /> : null}</div>
+      <div>{userDetailsTab === 3 ? <UserTodos /> : null}</div>
+      <div>{userDetailsTab === 4 ? <UserPosts /> : null}</div>
     </div>
   );
 }
