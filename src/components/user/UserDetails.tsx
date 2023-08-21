@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { switchUserDetailsTab } from "../../slices/usersSlice";
+import UserDetailsTab from "./UserDetailsTab";
 import UserInfo from "./UserInfo";
 import UserAlbums from "./UserAlbums";
 import UserTodos from "./UserTodos";
@@ -12,50 +13,18 @@ function UserDetails(): JSX.Element {
   return (
     <div className="p-8 flex flex-col items-center">
       <div className="flex gap-4">
-        <button
-          type="button"
-          className={
-            userDetailsTab === 1
-              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
-          }
-          onClick={() => dispatch(switchUserDetailsTab(1))}
-        >
+        <UserDetailsTab tabNumber={1} currentTab={userDetailsTab}>
           User's Info
-        </button>
-        <button
-          type="button"
-          className={
-            userDetailsTab === 2
-              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
-          }
-          onClick={() => dispatch(switchUserDetailsTab(2))}
-        >
+        </UserDetailsTab>
+        <UserDetailsTab tabNumber={2} currentTab={userDetailsTab}>
           User's Albums
-        </button>
-        <button
-          type="button"
-          className={
-            userDetailsTab === 3
-              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
-          }
-          onClick={() => dispatch(switchUserDetailsTab(3))}
-        >
+        </UserDetailsTab>
+        <UserDetailsTab tabNumber={3} currentTab={userDetailsTab}>
           User's ToDos
-        </button>
-        <button
-          type="button"
-          className={
-            userDetailsTab === 4
-              ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
-              : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
-          }
-          onClick={() => dispatch(switchUserDetailsTab(4))}
-        >
+        </UserDetailsTab>
+        <UserDetailsTab tabNumber={4} currentTab={userDetailsTab}>
           User's Posts
-        </button>
+        </UserDetailsTab>
       </div>
       <div>{userDetailsTab === 1 ? <UserInfo /> : null}</div>
       <div>{userDetailsTab === 2 ? <UserAlbums /> : null}</div>
