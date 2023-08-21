@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux";
-import { switchUserDetailsTab } from "../../slices/usersSlice";
-
-function UserDetailsTab({ tabNumber, currentTab, children }): JSX.Element {
-  const dispatch = useDispatch();
-
+function UserDetailsTab({
+  tabNumber,
+  currentTab,
+  onClick,
+  children,
+}): JSX.Element {
   return (
     <button
       type="button"
@@ -12,7 +12,7 @@ function UserDetailsTab({ tabNumber, currentTab, children }): JSX.Element {
           ? "bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
           : "bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
       }
-      onClick={() => dispatch(switchUserDetailsTab(tabNumber))}
+      onClick={onClick}
     >
       {children}
     </button>

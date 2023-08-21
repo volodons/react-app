@@ -9,7 +9,6 @@ import {
 
 const initialState = {
   users: [],
-  userDetailsTab: 1,
   userInfo: [],
   userAlbums: [],
   userTodos: [],
@@ -22,9 +21,6 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    switchUserDetailsTab: (state, action) => {
-      state.userDetailsTab = action.payload;
-    },
     toggleUserTodo: (state, action) => {
       const userTodoId = action.payload;
       const userTodoToToggle = state.userTodos.find(
