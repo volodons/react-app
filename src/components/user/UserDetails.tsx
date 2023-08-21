@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { switchUserDetailsTab } from "../../slices/usersSlice";
 import UserInfo from "./UserInfo";
 import UserAlbums from "./UserAlbums";
+import UserTodos from "./UserTodos";
 
 function UserDetails(): JSX.Element {
   const dispatch = useDispatch();
@@ -55,8 +56,9 @@ function UserDetails(): JSX.Element {
           User's Posts
         </button>
       </div>
-      <div className="p-4">{userDetailsTab === 1 ? <UserInfo /> : null}</div>
-      <div className="p-4">{userDetailsTab === 2 ? <UserAlbums /> : null}</div>
+      <div className="p-2">{userDetailsTab === 1 ? <UserInfo /> : null}</div>
+      <div className="p-2">{userDetailsTab === 2 ? <UserAlbums /> : null}</div>
+      <div className="p-2">{userDetailsTab === 3 ? <UserTodos /> : null}</div>
     </div>
   );
 }
