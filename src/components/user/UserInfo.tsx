@@ -18,7 +18,7 @@ function UserInfo(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchUserInfo(userId));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   if (loading) {
     return <div>Loading...</div>;
