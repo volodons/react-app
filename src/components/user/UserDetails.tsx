@@ -8,6 +8,21 @@ import UserPosts from "./UserPosts";
 function UserDetails(): JSX.Element {
   const [currentUserDetailsTab, setCurrentUserDetailsTab] = useState(1);
 
+  const renderCurrentTabContent = () => {
+    switch (currentUserDetailsTab) {
+      case 1:
+        return <UserInfo />;
+      case 2:
+        return <UserAlbums />;
+      case 3:
+        return <UserTodos />;
+      case 4:
+        return <UserPosts />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="p-8 flex flex-col items-center">
       <div className="flex gap-4">
@@ -40,10 +55,7 @@ function UserDetails(): JSX.Element {
           User's Posts
         </UserDetailsTab>
       </div>
-      <div>{currentUserDetailsTab === 1 && <UserInfo />}</div>
-      <div>{currentUserDetailsTab === 2 && <UserAlbums />}</div>
-      <div>{currentUserDetailsTab === 3 && <UserTodos />}</div>
-      <div>{currentUserDetailsTab === 4 && <UserPosts />}</div>
+      {renderCurrentTabContent()}
     </div>
   );
 }
