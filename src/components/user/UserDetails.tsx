@@ -40,10 +40,10 @@ function UserDetails(): JSX.Element {
           User's Posts
         </UserDetailsTab>
       </div>
-      <div>{currentUserDetailsTab === 1 ? <UserInfo /> : null}</div>
-      <div>{currentUserDetailsTab === 2 ? <UserAlbums /> : null}</div>
-      <div>{currentUserDetailsTab === 3 ? <UserTodos /> : null}</div>
-      <div>{currentUserDetailsTab === 4 ? <UserPosts /> : null}</div>
+      <div>{currentUserDetailsTab === 1 && <UserInfo />}</div>
+      <div>{currentUserDetailsTab === 2 && <UserAlbums />}</div>
+      <div>{currentUserDetailsTab === 3 && <UserTodos />}</div>
+      <div>{currentUserDetailsTab === 4 && <UserPosts />}</div>
     </div>
   );
 }
