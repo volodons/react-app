@@ -25,6 +25,15 @@ const usersSlice = createSlice({
     switchUserDetailsTab: (state, action) => {
       state.userDetailsTab = action.payload;
     },
+    toggleUserTodo: (state, action) => {
+      const userTodoId = action.payload;
+      const userTodoToToggle = state.userTodos.find(
+        (userTodo) => userTodo.id === userTodoId
+      );
+      if (userTodoToToggle) {
+        userTodoToToggle.completed = !userTodoToToggle.completed;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -91,5 +100,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { switchUserDetailsTab } = usersSlice.actions;
+export const { switchUserDetailsTab, toggleUserTodo } = usersSlice.actions;
 export default usersSlice.reducer;
