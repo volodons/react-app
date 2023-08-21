@@ -23,13 +23,20 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
 export const fetchUserInfo = createAsyncThunk(
   "fetchUserInfo",
   async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${userId}`
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch user's info");
+    const state = store.getState();
+    const userInfo = state.users.userInfo;
+
+    if (userInfo.length === 0) {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${userId}`
+        );
+        return response.data;
+      } catch (error) {
+        throw new Error("Failed to fetch user's info");
+      }
+    } else {
+      return userInfo;
     }
   }
 );
@@ -37,13 +44,20 @@ export const fetchUserInfo = createAsyncThunk(
 export const fetchUserAlbums = createAsyncThunk(
   "fetchUserAlbums",
   async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${userId}/albums`
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch user's albums");
+    const state = store.getState();
+    const userAlbums = state.users.userAlbums;
+
+    if (userAlbums.length === 0) {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${userId}/albums`
+        );
+        return response.data;
+      } catch (error) {
+        throw new Error("Failed to fetch user's albums");
+      }
+    } else {
+      return userAlbums;
     }
   }
 );
@@ -51,13 +65,20 @@ export const fetchUserAlbums = createAsyncThunk(
 export const fetchUserTodos = createAsyncThunk(
   "fetchUserTodos",
   async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${userId}/todos`
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch user's todos");
+    const state = store.getState();
+    const userTodos = state.users.userTodos;
+
+    if (userTodos.length === 0) {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${userId}/todos`
+        );
+        return response.data;
+      } catch (error) {
+        throw new Error("Failed to fetch user's todos");
+      }
+    } else {
+      return userTodos;
     }
   }
 );
@@ -65,13 +86,20 @@ export const fetchUserTodos = createAsyncThunk(
 export const fetchUserPosts = createAsyncThunk(
   "fetchUserPosts",
   async (userId) => {
-    try {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${userId}/posts`
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch user's posts");
+    const state = store.getState();
+    const userPosts = state.users.userPosts;
+
+    if (userPosts.length === 0) {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${userId}/posts`
+        );
+        return response.data;
+      } catch (error) {
+        throw new Error("Failed to fetch user's posts");
+      }
+    } else {
+      return userPosts;
     }
   }
 );
