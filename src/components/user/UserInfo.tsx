@@ -29,7 +29,7 @@ function UserInfo(): JSX.Element {
   }
 
   return (
-    <div className="flex flex-col items-center mt-4">
+    <div className="flex flex-col items-center mt-4 p-2">
       <ul>
         <li className="mt-4">
           <FontAwesomeIcon icon={faEnvelope} style={{ color: "#3b82f6" }} />
