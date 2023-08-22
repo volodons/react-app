@@ -1,14 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { store } from "../store/store";
+import {
+  User,
+  UserInfo,
+  UserAlbum,
+  UserTodo,
+  UserPost,
+} from "../slices/usersSlice";
 
-export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
+export const fetchUsers = createAsyncThunk<User[]>("fetchUsers", async () => {
   const state = store.getState();
   const users = state.users.users;
 
   if (users.length === 0) {
     try {
-      const response = await axios.get(
+      const response = await axios.get<User[]>(
         "https://jsonplaceholder.typicode.com/users"
       );
       return response.data;
@@ -20,7 +27,7 @@ export const fetchUsers = createAsyncThunk("fetchUsers", async () => {
   }
 });
 
-export const fetchUserInfo = createAsyncThunk(
+export const fetchUserInfo = createAsyncThunk<UserInfo, string>(
   "fetchUserInfo",
   async (userId) => {
     const state = store.getState();
@@ -28,7 +35,7 @@ export const fetchUserInfo = createAsyncThunk(
 
     if (userInfo.length === 0) {
       try {
-        const response = await axios.get(
+        const response = await axios.get<UserInfo>(
           `https://jsonplaceholder.typicode.com/users/${userId}`
         );
         return response.data;
@@ -41,7 +48,7 @@ export const fetchUserInfo = createAsyncThunk(
   }
 );
 
-export const fetchUserAlbums = createAsyncThunk(
+export const fetchUserAlbums = createAsyncThunk<UserAlbum, string>(
   "fetchUserAlbums",
   async (userId) => {
     const state = store.getState();
@@ -49,7 +56,7 @@ export const fetchUserAlbums = createAsyncThunk(
 
     if (userAlbums.length === 0) {
       try {
-        const response = await axios.get(
+        const response = await axios.get<UserAlbum>(
           `https://jsonplaceholder.typicode.com/users/${userId}/albums`
         );
         return response.data;
@@ -62,7 +69,7 @@ export const fetchUserAlbums = createAsyncThunk(
   }
 );
 
-export const fetchUserTodos = createAsyncThunk(
+export const fetchUserTodos = createAsyncThunk<UserTodo, string>(
   "fetchUserTodos",
   async (userId) => {
     const state = store.getState();
@@ -70,7 +77,7 @@ export const fetchUserTodos = createAsyncThunk(
 
     if (userTodos.length === 0) {
       try {
-        const response = await axios.get(
+        const response = await axios.get<UserTodo>(
           `https://jsonplaceholder.typicode.com/users/${userId}/todos`
         );
         return response.data;
@@ -83,7 +90,7 @@ export const fetchUserTodos = createAsyncThunk(
   }
 );
 
-export const fetchUserPosts = createAsyncThunk(
+export const fetchUserPosts = createAsyncThunk<UserPost, string>(
   "fetchUserPosts",
   async (userId) => {
     const state = store.getState();
@@ -91,7 +98,7 @@ export const fetchUserPosts = createAsyncThunk(
 
     if (userPosts.length === 0) {
       try {
-        const response = await axios.get(
+        const response = await axios.get<UserPost>(
           `https://jsonplaceholder.typicode.com/users/${userId}/posts`
         );
         return response.data;
