@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../api/postsApi";
+import { RootState } from "../../store/store";
 
 function PostItem(): JSX.Element {
   const dispatch = useDispatch();
-  const { posts, loading, error } = useSelector((state) => state.posts);
+  const { posts, loading, error } = useSelector(
+    (state: RootState) => state.posts
+  );
 
   useEffect(() => {
     dispatch(fetchPosts());
