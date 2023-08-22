@@ -3,11 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserTodos } from "../../api/usersApi";
 import { toggleUserTodo } from "../../slices/usersSlice";
+import { RootState } from "../../store/store";
+import { ThunkDispatch } from "redux-thunk";
+
+type ToggleUserTodoAction = ReturnType<typeof toggleUserTodo>;
 
 function UserTodos(): JSX.Element {
-  const dispatch = useDispatch();
-  const { userTodos, loading, error } = useSelector((state) => state.users);
-  const { userId } = useParams();
+  const dispatch =
+    useDispatch<ThunkDispatch<RootState, undefined, ToggleUserTodoAction>>();
+  const { userTodos, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
+  const { userId } = useParams<{ userId: string }>();
 
   useEffect(() => {
     dispatch(fetchUserTodos(userId));

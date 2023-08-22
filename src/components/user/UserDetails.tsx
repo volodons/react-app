@@ -6,9 +6,9 @@ import UserTodos from "./UserTodos";
 import UserPosts from "./UserPosts";
 
 function UserDetails(): JSX.Element {
-  const [currentUserDetailsTab, setCurrentUserDetailsTab] = useState(1);
+  const [currentUserDetailsTab, setCurrentUserDetailsTab] = useState<number>(1);
 
-  const renderCurrentTabContent = () => {
+  const renderCurrentTabContent = (): JSX.Element | null => {
     switch (currentUserDetailsTab) {
       case 1:
         return <UserInfo />;

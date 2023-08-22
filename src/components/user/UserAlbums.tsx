@@ -2,14 +2,23 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserAlbums } from "../../api/usersApi";
+import { RootState } from "../../store/store";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
+
+type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
 
 function UserAlbums(): JSX.Element {
-  const dispatch = useDispatch();
-  const { userAlbums, loading, error } = useSelector((state) => state.users);
-  const { userId } = useParams();
+  const dispatch: AppDispatch = useDispatch();
+  const { userAlbums, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
+  const { userId } = useParams<{ userId?: string }>();
 
   useEffect(() => {
-    dispatch(fetchUserAlbums(userId));
+    if (userId) {
+      dispatch(fetchUserAlbums(userId));
+    }
   }, [dispatch, userId]);
 
   if (loading) {

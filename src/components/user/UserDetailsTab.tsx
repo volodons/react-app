@@ -1,9 +1,16 @@
+interface UserDetailsTabProps {
+  tabNumber: number;
+  currentTab: number;
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
 function UserDetailsTab({
   tabNumber,
   currentTab,
   onClick,
   children,
-}): JSX.Element {
+}: UserDetailsTabProps): JSX.Element {
   return (
     <button
       type="button"

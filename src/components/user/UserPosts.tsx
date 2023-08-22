@@ -2,11 +2,14 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserPosts } from "../../api/usersApi";
+import { RootState } from "../../store/store";
 
 function UserPosts(): JSX.Element {
   const dispatch = useDispatch();
-  const { userPosts, loading, error } = useSelector((state) => state.users);
-  const { userId } = useParams();
+  const { userPosts, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
+  const { userId } = useParams<{ userId: string }>();
 
   useEffect(() => {
     dispatch(fetchUserPosts(userId));

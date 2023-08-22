@@ -10,11 +10,14 @@ import {
   faGlobe,
   faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
+import { RootState } from "../../store/store";
 
 function UserInfo(): JSX.Element {
   const dispatch = useDispatch();
-  const { userInfo, loading, error } = useSelector((state) => state.users);
-  const { userId } = useParams();
+  const { userInfo, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
+  const { userId } = useParams<{ userId: string }>();
 
   useEffect(() => {
     dispatch(fetchUserInfo(userId));
