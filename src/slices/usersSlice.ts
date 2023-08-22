@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchUsers,
   fetchUserInfo,
@@ -7,7 +7,51 @@ import {
   fetchUserPosts,
 } from "../api/usersApi";
 
-const initialState = {
+export interface User {
+  id: number;
+  name: string;
+  username: string;
+}
+
+export interface UserInfo {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: object;
+  phone: string;
+  website: string;
+  company: object;
+}
+
+export interface UserAlbum {
+  id: number;
+  title: string;
+}
+
+export interface UserTodo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+export interface UserPost {
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface UsersState {
+  users: User[];
+  userInfo: UserInfo[];
+  userAlbums: UserAlbum[];
+  userTodos: UserTodo[];
+  userPosts: UserPost[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: UsersState = {
   users: [],
   userInfo: [],
   userAlbums: [],
@@ -21,7 +65,7 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    toggleUserTodo: (state, action) => {
+    toggleUserTodo: (state, action: PayloadAction<number>) => {
       const userTodoId = action.payload;
       const userTodoToToggle = state.userTodos.find(
         (userTodo) => userTodo.id === userTodoId
@@ -43,7 +87,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       })
       .addCase(fetchUserInfo.pending, (state) => {
         state.loading = true;
@@ -55,7 +99,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUserInfo.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       })
       .addCase(fetchUserAlbums.pending, (state) => {
         state.loading = true;
@@ -67,7 +111,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUserAlbums.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       })
       .addCase(fetchUserTodos.pending, (state) => {
         state.loading = true;
@@ -79,7 +123,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUserTodos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       })
       .addCase(fetchUserPosts.pending, (state) => {
         state.loading = true;
@@ -91,10 +135,10 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUserPosts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       });
   },
 });
 
-export const { switchUserDetailsTab, toggleUserTodo } = usersSlice.actions;
+export const { toggleUserTodo } = usersSlice.actions;
 export default usersSlice.reducer;
