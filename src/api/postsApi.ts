@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { store } from "../store/store";
+import { Post } from "../slices/postsSlice";
 
 export const fetchPosts = createAsyncThunk("fetchPosts", async () => {
   const state = store.getState();
@@ -8,7 +9,7 @@ export const fetchPosts = createAsyncThunk("fetchPosts", async () => {
 
   if (posts.length === 0) {
     try {
-      const response = await axios.get(
+      const response = await axios.get<Post[]>(
         "https://jsonplaceholder.typicode.com/posts"
       );
       return response.data;
@@ -20,12 +21,12 @@ export const fetchPosts = createAsyncThunk("fetchPosts", async () => {
   }
 });
 
-export const sendPost = createAsyncThunk("sendPost", async (post) => {
+export const sendPost = createAsyncThunk("sendPost", async (post: Post) => {
   const state = store.getState();
   const posts = state.posts.posts;
 
   try {
-    const response = await axios.post(
+    const response = await axios.post<Post[]>(
       "https://jsonplaceholder.typicode.com/posts",
       {
         title: post.title,

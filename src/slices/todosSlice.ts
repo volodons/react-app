@@ -1,7 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchTodos } from "../api/todosApi";
 
-const initialState = {
+export interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+interface TodosState {
+  todos: Todo[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: TodosState = {
   todos: [],
   loading: false,
   error: null,
@@ -11,7 +23,7 @@ const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    toggleTodo: (state, action) => {
+    toggleTodo: (state, action: PayloadAction<number>) => {
       const todoId = action.payload;
       const todoToToggle = state.todos.find((todo) => todo.id === todoId);
       if (todoToToggle) {
@@ -31,7 +43,7 @@ const todosSlice = createSlice({
       })
       .addCase(fetchTodos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       });
   },
 });

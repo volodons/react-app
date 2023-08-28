@@ -2,10 +2,17 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../../api/todosApi";
 import { toggleTodo } from "../../slices/todosSlice";
+import { RootState } from "../../store/store";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
+
+type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
 
 function TodoItem(): JSX.Element {
-  const dispatch = useDispatch();
-  const { todos, loading, error } = useSelector((state) => state.todos);
+  const dispatch: AppDispatch = useDispatch();
+  const { todos, loading, error } = useSelector(
+    (state: RootState) => state.todos
+  );
 
   useEffect(() => {
     dispatch(fetchTodos());

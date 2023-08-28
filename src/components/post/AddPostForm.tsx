@@ -1,23 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
 import { sendPost } from "../../api/postsApi";
 import { useForm, Controller } from "react-hook-form";
+import { RootState } from "../../store/store";
+
+interface FormData {
+  title: string;
+  body: string;
+}
 
 function AddPostForm(): JSX.Element {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.posts);
+  const { loading, error } = useSelector((state: RootState) => state.posts);
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     defaultValues: {
       title: "",
       body: "",
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     try {
       await dispatch(sendPost(data));
       reset();

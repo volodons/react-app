@@ -1,8 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "../api/postsApi";
-import { sendPost } from "../api/postsApi";
+import { fetchPosts, sendPost } from "../api/postsApi";
 
-const initialState = {
+export interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface PostsState {
+  posts: Post[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: PostsState = {
   posts: [],
   loading: false,
   error: null,
@@ -24,7 +35,7 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       })
       .addCase(sendPost.pending, (state) => {
         state.loading = true;
@@ -36,7 +47,7 @@ const postsSlice = createSlice({
       })
       .addCase(sendPost.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || "An error occurred";
       });
   },
 });
